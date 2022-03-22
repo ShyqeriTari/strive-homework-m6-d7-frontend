@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Col, Row } from "react-bootstrap";
-import posts from "../../../data/posts.json";
 import BlogItem from "../blog-item/BlogItem";
 
 const BlogList = (props) => {
@@ -17,8 +16,6 @@ const BlogList = (props) => {
   
   if (response.ok){
       setblogs(data)
-      console.log(data)
-      console.log(blogs)
   }
     } catch (error) {
       console.log(error)
@@ -37,8 +34,9 @@ const BlogList = (props) => {
           style={{
             marginBottom: 50,
           }}
+          key={blog._id} 
         >
-          <BlogItem key={blog.title} {...blog} />
+          <BlogItem key={blog._id} {...blog} />
         </Col>
       ))}
     </Row>

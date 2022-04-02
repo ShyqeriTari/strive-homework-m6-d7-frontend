@@ -7,7 +7,13 @@ const NewBlogPost = (props) => {
   const [text, setText] = useState("");
   const handleChange = useCallback((value) => {
     setText(value);
+    
+    console.log(value.replace(/(<([^>]+)>)/gi, ""))
   });
+
+  const quillObject = (event) =>{
+    console.log(event)
+  }
   return (
     <Container className="new-blog-container">
       <Form className="mt-5">
@@ -29,7 +35,7 @@ const NewBlogPost = (props) => {
           <Form.Label>Blog Content</Form.Label>
           <ReactQuill
             value={text}
-            onChange={handleChange}
+            onChange={(e)=> {handleChange(e)}}
             className="new-blog-content"
           />
         </Form.Group>
